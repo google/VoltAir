@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ Copyright (C) 2013 Google Inc.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ -->
+
+<!-- TODO: Remove references to VoltAir assets as these are not part of the Engine. -->
+<resources>
+    <string name="achievement_revealed">Achievement Revealed</string>
+    <string name="achievement_unlocked">Achievement Unlocked</string>
+    <string name="nova_title">Nova</string>
+    <string name="supernova_title">Supernova</string>
+    <string name="meganova_title">Meganova</string>
+    <string name="hypernova_title">Hypernova</string>
+    <string name="ultranova_title">Ultranova</string>
+    <string name="spelunking_title">Spelunking</string>
+    <string name="stargazing_title">Stargazing</string>
+    <string name="escape_velocity_title">Escape Velocity</string>
+    <string name="lots_of_bots_title">Lots of Bots</string>
+    <string name="challenge_accepted_title">Challenge Accepted</string>
+    <string name="extraterrestrial_title">Extraterrestrial</string>
+    <string name="dark_matter_title">Dark Matter</string>
+    <string name="the_cosmos_title">The Cosmos</string>
+    <string name="collect_all_the_things_title">Collect All the Things!</string>
+    <string name="shortcut_title">Shortcut</string>
+    <string name="energy_crisis_title">Energy Crisis</string>
+    <string name="going_going_gone_title">Going... going... gone!</string>
+    <string name="fast_and_curious_title">Fast and Curious</string>
+</resources>

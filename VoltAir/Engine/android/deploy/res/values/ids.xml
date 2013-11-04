@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ Copyright (C) 2013 Google Inc.
+
+ Licensed under the Apache License, Version 2.0 (the "License");
+ you may not use this file except in compliance with the License.
+ You may obtain a copy of the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS,
+ WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ See the License for the specific language governing permissions and
+ limitations under the License.
+ -->
+
+<!-- Achievement IDs: Fill these values in with your game's achievement IDs. -->
+<!-- For more information, see https://developers.google.com/games/services -->
+<resources>
+    <string name="app_id">0</string>
+    <string name="nova">0</string>
+    <string name="supernova">0</string>
+    <string name="meganova">0</string>
+    <string name="hypernova">0</string>
+    <string name="ultranova">0</string>
+    <string name="spelunking">0</string>
+    <string name="stargazing">0</string>
+    <string name="escape_velocity">0</string>
+    <string name="lots_of_bots">0</string>
+    <string name="challenge_accepted">0</string>
+    <string name="extraterrestrial">0</string>
+    <string name="dark_matter">0</string>
+    <string name="the_cosmos">0</string>
+    <string name="collect_all_the_things">0</string>
+    <string name="shortcut">0</string>
+    <string name="energy_crisis">0</string>
+    <string name="going_going_gone">0</string>
+    <string name="fast_and_curious">0</string>
+</resources>

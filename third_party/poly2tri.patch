@@ -1,0 +1,226 @@
+diff --git a/poly2tri/common/shapes.cc b/poly2tri/common/shapes.cc
+index 50c1043..434ef93 100644
+--- a/poly2tri/common/shapes.cc
++++ b/poly2tri/common/shapes.cc
+@@ -158,9 +158,10 @@ int Triangle::Index(const Point* p)
+     return 1;
+   } else if (p == points_[2]) {
+     return 2;
++  } else {
++    assert(0);
++    return -1;
+   }
+-  assert(0);
+-  return -1;
+ }
+ 
+ int Triangle::EdgeIndex(const Point* p1, const Point* p2)
+@@ -218,9 +219,10 @@ Point* Triangle::PointCW(Point& point)
+     return points_[0];
+   } else if (&point == points_[2]) {
+     return points_[1];
++  } else {
++    assert(0);
++    return nullptr;
+   }
+-  assert(0);
+-  return NULL;
+ }
+ 
+ // The point counter-clockwise to given point
+@@ -232,9 +234,10 @@ Point* Triangle::PointCCW(Point& point)
+     return points_[2];
+   } else if (&point == points_[2]) {
+     return points_[0];
++  } else {
++    assert(0);
++    return nullptr;
+   }
+-  assert(0);
+-  return NULL;
+ }
+ 
+ // The neighbor clockwise to given point
+@@ -362,4 +365,4 @@ void Triangle::DebugPrint()
+   cout << points_[2]->x << "," << points_[2]->y << endl;
+ }
+ 
+-}
+\ No newline at end of file
++}
+diff --git a/poly2tri/common/shapes.h b/poly2tri/common/shapes.h
+index 7ee1909..8ed10f0 100644
+--- a/poly2tri/common/shapes.h
++++ b/poly2tri/common/shapes.h
+@@ -320,4 +320,4 @@ inline void Triangle::IsInterior(bool b)
+ 
+ }
+ 
+-#endif
+\ No newline at end of file
++#endif
+diff --git a/poly2tri/common/utils.h b/poly2tri/common/utils.h
+index dcfb812..e4e924b 100644
+--- a/poly2tri/common/utils.h
++++ b/poly2tri/common/utils.h
+@@ -119,4 +119,4 @@ bool InScanArea(Point& pa, Point& pb, Point& pc, Point& pd)
+ 
+ }
+ 
+-#endif
+\ No newline at end of file
++#endif
+diff --git a/poly2tri/poly2tri.h b/poly2tri/poly2tri.h
+index 29a08d0..ba5cc15 100644
+--- a/poly2tri/poly2tri.h
++++ b/poly2tri/poly2tri.h
+@@ -35,4 +35,4 @@
+ #include "common/shapes.h"
+ #include "sweep/cdt.h"
+ 
+-#endif
+\ No newline at end of file
++#endif
+diff --git a/poly2tri/sweep/advancing_front.cc b/poly2tri/sweep/advancing_front.cc
+index d81a41c..0e6cf56 100644
+--- a/poly2tri/sweep/advancing_front.cc
++++ b/poly2tri/sweep/advancing_front.cc
+@@ -105,4 +105,4 @@ AdvancingFront::~AdvancingFront()
+ {
+ }
+ 
+-}
+\ No newline at end of file
++}
+diff --git a/poly2tri/sweep/cdt.cc b/poly2tri/sweep/cdt.cc
+index f983858..88059b8 100644
+--- a/poly2tri/sweep/cdt.cc
++++ b/poly2tri/sweep/cdt.cc
+@@ -68,4 +68,4 @@ CDT::~CDT()
+   delete sweep_;
+ }
+ 
+-}
+\ No newline at end of file
++}
+diff --git a/poly2tri/sweep/sweep.cc b/poly2tri/sweep/sweep.cc
+index cfd675c..85abe00 100644
+--- a/poly2tri/sweep/sweep.cc
++++ b/poly2tri/sweep/sweep.cc
+@@ -49,7 +49,7 @@ void Sweep::Triangulate(SweepContext& tcx)
+ 
+ void Sweep::SweepPoints(SweepContext& tcx)
+ {
+-  for (size_t i = 1; i < tcx.point_count(); i++) {
++  for (int i = 1; i < tcx.point_count(); i++) {
+     Point& point = *tcx.GetPoint(i);
+     Node* node = &PointEvent(tcx, point);
+     for (unsigned int i = 0; i < point.edge_list.size(); i++) {
+@@ -765,8 +765,11 @@ Point& Sweep::NextFlipPoint(Point& ep, Point& eq, Triangle& ot, Point& op)
+   } else if (o2d == CCW) {
+     // Left
+     return *ot.PointCW(op);
++  } else {
++    //throw new RuntimeException("[Unsupported] Opposing point on constrained edge");
++    assert(0);
++    return *ot.PointCCW(op);
+   }
+-  throw std::runtime_error("[Unsupported] Opposing point on constrained edge");
+ }
+ 
+ void Sweep::FlipScanEdgeEvent(SweepContext& tcx, Point& ep, Point& eq, Triangle& flip_triangle,
+diff --git a/poly2tri/sweep/sweep.h b/poly2tri/sweep/sweep.h
+index addd3d4..54b6e79 100644
+--- a/poly2tri/sweep/sweep.h
++++ b/poly2tri/sweep/sweep.h
+@@ -33,7 +33,7 @@
+  * Zalik, B.(2008)'Sweep-line algorithm for constrained Delaunay triangulation',
+  * International Journal of Geographical Information Science
+  *
+- * "FlipScan" Constrained Edge Algorithm invented by Thomas ?hl?n, thahlen@gmail.com
++ * "FlipScan" Constrained Edge Algorithm invented by Thomas Åhlén, thahlen@gmail.com
+  */
+ 
+ #ifndef SWEEP_H
+@@ -282,4 +282,4 @@ private:
+ 
+ }
+ 
+-#endif
+\ No newline at end of file
++#endif
+diff --git a/poly2tri/sweep/sweep_context.cc b/poly2tri/sweep/sweep_context.cc
+index 150f1a0..6c0b044 100644
+--- a/poly2tri/sweep/sweep_context.cc
++++ b/poly2tri/sweep/sweep_context.cc
+@@ -34,7 +34,7 @@
+ 
+ namespace p2t {
+ 
+-SweepContext::SweepContext(std::vector<Point*> polyline) : points_(polyline),
++SweepContext::SweepContext(std::vector<Point*> polyline) :
+   front_(0),
+   head_(0),
+   tail_(0),
+@@ -42,6 +42,11 @@ SweepContext::SweepContext(std::vector<Point*> polyline) : points_(polyline),
+   af_middle_(0),
+   af_tail_(0)
+ {
++  basin = Basin();
++  edge_event = EdgeEvent();
++
++  points_ = polyline;
++
+   InitEdges(points_);
+ }
+ 
+@@ -97,14 +102,14 @@ void SweepContext::InitTriangulation()
+ 
+ void SweepContext::InitEdges(std::vector<Point*> polyline)
+ {
+-  size_t num_points = polyline.size();
+-  for (size_t i = 0; i < num_points; i++) {
+-    size_t j = i < num_points - 1 ? i + 1 : 0;
++  int num_points = polyline.size();
++  for (int i = 0; i < num_points; i++) {
++    int j = i < num_points - 1 ? i + 1 : 0;
+     edge_list.push_back(new Edge(*polyline[i], *polyline[j]));
+   }
+ }
+ 
+-Point* SweepContext::GetPoint(size_t index)
++Point* SweepContext::GetPoint(const int& index)
+ {
+   return points_[index];
+ }
+diff --git a/poly2tri/sweep/sweep_context.h b/poly2tri/sweep/sweep_context.h
+index 2853a1e..1010c0e 100644
+--- a/poly2tri/sweep/sweep_context.h
++++ b/poly2tri/sweep/sweep_context.h
+@@ -64,7 +64,7 @@ void set_tail(Point* p1);
+ 
+ Point* tail();
+ 
+-size_t point_count();
++int point_count();
+ 
+ Node& LocateNode(Point& point);
+ 
+@@ -77,7 +77,7 @@ void MapTriangleToNodes(Triangle& t);
+ 
+ void AddToMap(Triangle* triangle);
+ 
+-Point* GetPoint(size_t index);
++Point* GetPoint(const int& index);
+ 
+ Point* GetPoints();
+ 
+@@ -156,7 +156,7 @@ inline AdvancingFront* SweepContext::front()
+   return front_;
+ }
+ 
+-inline size_t SweepContext::point_count()
++inline int SweepContext::point_count()
+ {
+   return points_.size();
+ }

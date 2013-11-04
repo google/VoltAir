@@ -1,0 +1,13 @@
+*.user
+bin
+build-*
+gen
+local.properties
+obj
+Droidlings/android/libs
+doxygen
+doc/API-Ref
+doc/gettingStarted
+doc/contributing
+doc/main
+index.html

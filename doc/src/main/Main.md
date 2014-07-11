@@ -35,7 +35,7 @@ The VoltAir Project {#mainpage}
 20. [How could I use the different particle types in LiquidFun and what other additional features
     could I add to VoltAir?](#20)
 21. [Where is the level editor?](#21)
-22. [Why aren't use using Play Games Services C++ SDK?](#22)
+22. [Why aren't you using the Play Games Services C++ SDK?](#22)
 23. [What's the deal with the sound files in the open source code?](#23)
 24. [What workarounds did you need to implement?](#24)
 
@@ -44,12 +44,13 @@ The VoltAir Project {#mainpage}
 ## <a name="1"></a> What is VoltAir?
 
 The Fun Propulsion Labs at Google are quite proud to announce that VoltAir, a casual single and
-local multiplayer game, is now available on the Google Play Store and as open source software.
+local multiplayer game, is now available on the [Google Play Store][VoltAir] and as [open source
+software][GettingStarted].
 
 <div class="voltAirVideo" align="center"></div>
 
 The game features a spunky, speedy robot stranded on an alien planet. Going as fast as his single
-wheel will carry him, he flies over ramps, zips around meteors and rides geysers in his search for
+wheel will carry him, he flies over ramps, zips around meteors, and rides geysers in his search for
 the portal that will take him home.
 
 ![Powered By LiquidFun](liquidfun-logo-horizontal-small.png)
@@ -57,8 +58,8 @@ the portal that will take him home.
 VoltAir shows how versatile our LiquidFun tech can be when applied to a consumer application.
 LiquidFun is a C++ 2D physics library based on Box2D that includes high-performance particle
 simulation. It's used a few different ways in the game, as an obstacle for our little robot hero to
-work around, as a platform that lifts our hero to new heights, and simply as a way to add a moving,
-splashing graphic touches to levels.
+work around, as a platform that lifts our hero to new heights, and simply as a way to add moving,
+splashing, graphic touches to levels.
 
 We built the game on top of [QtQuick][], which you can read more about [below](#11).
 
@@ -67,8 +68,8 @@ We built the game on top of [QtQuick][], which you can read more about [below](#
 ## <a name="2"></a> How do I get started using VoltAir?
 
 You can download and play a [working copy of VoltAir][VoltAir] off of the Google Play Store or take
-a look at [the introduction to our open source project][GettingStarted] to
-get started how to download, build, and run the project.
+a look at [the introduction to our open source project][GettingStarted] to get started downloading,
+building, and running the project.
 
 **************************************************
 
@@ -88,7 +89,7 @@ For information on working on the VoltAir project, please see our [Contributing 
 
 VoltAir was developed to provide an example of a C++ game designed for both Android and Android TV.
 For example, it shows on-screen controls when run on a mobile device, but does not show controls
-when on a TV.  Additionally, VoltAir demonstrates controllers, local multiplayer in Android, and how
+when on a TV. Additionally, VoltAir demonstrates controllers, local multiplayer in Android, and how
 to closely integrate [LiquidFun][].
 
 VoltAir was not developed to compete with existing platform games, to make money, to provide a
@@ -105,10 +106,11 @@ the project.
 
 ## <a name="7"></a> What platforms can I build and run VoltAir on?
 
-We've tested building VoltAir on Mac and Ubuntu, targeted for running on Mac, Ubuntu, and Android.
+We've tested building VoltAir on Mac OS X and Ubuntu, targeted for running on Mac OS X, Ubuntu, and
+Android devices.
 
 Theoretically, with a bit of work, other platforms could be supported through the cross-platform
-nature of Qt and QtCreator.
+nature of Qt and Qt Creator.
 
 **************************************************
 
@@ -120,9 +122,9 @@ VoltAir is known to run on Android 18+ and Android TV.
 
 ## <a name="9"></a> What devices is VoltAir known to run on and why aren't more devices supported?
 
-VoltAir has been tested on Nexus 5, Nexus 7, Moto-X by Motorola, AndroidTV, and some Samsung
-devices. Some devices are not supported because we did not optimize for all phones, and the game
-would not perform well enough on them.
+VoltAir has been tested on Nexus 5, Nexus 7, Moto X by Motorola, Android TV, and some Samsung
+devices. Some devices are not supported because we did not optimize for all phones, and, as a
+result, the game would not perform well enough on them.
 
 **************************************************
 
@@ -136,24 +138,24 @@ with LiquidFun, and is more familiar to the game developer community.
 ## <a name="11"></a> Why did we choose to use Qt and what is QtQuick?
 
 [QtQuick][] is one of the many frameworks provided by the [Qt Project][Qt]. It is best described as
-a 2D scene graph with an accompanying renderer. You build up a tree of items, each of which reprsent
-some aspect of the scene: graphics, physics, input, audio, data storage, etc. You can define your
-own items by either subclassing `QQuickItem` (for items that have some graphical significance) or
-`QObject` (for items that are important for other uses). `QQuickItem` is actually a subclass of
-`QObject`.
+a 2D scene graph with an accompanying renderer. You can build up a tree of items, each of which
+represents some aspect of the scene: graphics, physics, input, audio, data storage, etc. You can
+also define your own items by either subclassing `QQuickItem` (for items that have some graphical
+significance) or `QObject` (for items that are important for other uses). NOTE: `QQuickItem` is
+actually a subclass of `QObject`.
 
 The QtQuick framework provides only a very shallow hierarchy of `QQuickItem` subclasses. Instead,
 the prescribed way to instantiate the objects is to write the graph in *QML*, a markup language in
-which you can describe hierarchies of QQuickItem. Instead of providing a class hierarchy of
+which you can describe hierarchies of `QQuickItem`s. Instead of providing a class hierarchy of
 `QQuickItem`s, Qt provides a hierarchy of QML `Item`s, of which there are hundreds. When you
 subclass from `QQuickItem`, you can register your class to become available in QML as well. You can
-also write a QML file that can then be instantiated as you would a single item.
+also write a QML file that can then be instantiated as you would a single `Item`.
 
 Due to time constraints, writing our own engine from the ground up wasn't really an option. We
-looked at various UI frameworks and game engines and decided Qt was the more daring choice due to
-the lack of games developed in it, but also a very interesting one due to the future ability to
-extend it into a rich editor, support from Digia, and many technical development advantages.
-For example, below is just a few of the benefits we found working with Qt and QtQuick:
+looked at various UI frameworks and game engines and decided Qt was not only the more daring choice
+due to the lack of games developed in it, but also a very interesting one due to the future ability
+to extend it into a rich editor, support from Digia, and many technical development advantages such
+as:
   * Provided a platform abstraction that allowed us to also develop and test on desktop, reducing
     iteration time
   * Included a scene graph and out of the box "serialization" mechanism
@@ -176,12 +178,12 @@ gameplay:
   * **Single Player Campaign**:
 
     In the single player campaign, players navigate a "robot" through multiple levels using rolling
-    on a surface  and "magnetizing" towards "meteors", collect energy balls in their path. There are
-    liquids flowing throughout the levels that create obstacles and puzzles.
+    on a surface  and "magnetizing" towards "meteors" to collect energy balls in their path. There
+    are liquids flowing throughout the levels that create obstacles and puzzles.
 
-    For a gamepad, rolling is controlled via a left / right action on the joystick, dpad, or
-    back L2/R2 triggers. Magnetism is controlled via the "A" button or L1/R1 triggers. On other
-    devices, such as keyboards or touch screens, these map to other logical inputs.
+    For a gamepad, rolling is controlled via a left or right action on the joystick, dpad, or
+    `L2/R2` triggers. Magnetism is controlled via the `A` button or `L1/R1` triggers. On other
+    devices, such as keyboards or touch screens, these actions map to other logical inputs.
 
     Once a player has collected enough energy, a portal at the end of the level will open allowing
     them to advance to the next level. Google Play Games Services achievements are awarded during
@@ -191,20 +193,19 @@ gameplay:
 
   * **Multi Player Arena**:
 
-    In the multiplayer arena, up to 4 players compete on the device, possibly using different
-    controllers or splitting a single keyboard. A player joins the game simply by sending any event
+    In the multiplayer arena, up to 4 players compete on a single device, possibly using different
+    controllers or splitting a single keyboard. A player simply joins the game by sending any event
     from a previously paired input device. Gameplay is very similar to single player, however the
     multiplayer arena differs by being a fixed space in which the characters move with no explicit
     puzzles to solve, but rather a goal of collecting as many energy snowflakes as possible. These
-    snowflakes, while having similar energy properties to the orbs in single-player, differ in that
+    snowflakes, while having similar energy properties to the orbs in single player, differ in that
     they can be magnetically attracted to robots that are magnetized, making them a dynamic element
     in the game.
 
     In addition to the snowflakes being magnetic, players discover that robots, when magnetzied,
     also attract one another, and they can use this ability as a spoiler mechanic. The arena also
-    features several bumpers (featured less prominently in single-player levels) and liquids that
-    players can use to accelerate towards the snowflakes, which are constantly flowing from the top
-    of the screen.
+    features several bumpers and liquids that players can use to accelerate towards the snowflakes,
+    which are constantly flowing from the top of the screen.
 
     The player who collects a set number of snowflakes first is the winner.
 
@@ -212,9 +213,9 @@ gameplay:
 
 ### Software Design
 
-All aspects of VoltAir are defined by a hierarchy of QML items. There is both a static section that
-always remains loaded and a dynamic section, which is loaded and unloaded during the course of the
-game.
+All aspects of VoltAir are defined by a hierarchy of QML `Item`s. There is both a static section of
+the scene graph hierarchy that always remains loaded and a dynamic section, which is loaded and
+unloaded during the course of the game, as seen below:
 
 <img src="VoltAirSceneHierarchy.jpg" width="640" alt="VoltAir Scene Hierarchy">
 
@@ -227,31 +228,31 @@ What follows are the details about these various node types:
 
   * **Camera**:
 
-    The Camera controls how everything below it is rendered. Its `lookAt` property determines where
-    the camera points, and its `fov` property controls the zoom level. The Camera is able to deal
-    with different aspect ratios as well as manage the parallax system which causes objects in
-    different depth layers to move at different speeds, thereby creating the illusion of depth. The
-    camera also contains a logic for following one or more player characters in the level
+    The [Camera][] controls how everything below it is rendered. Its `lookAt` property determines
+    where the camera points, and its `fov` property controls the zoom level. The [Camera][] is able
+    to deal with different aspect ratios as well as manage the parallax system which causes objects
+    in different depth layers to move at different speeds, thereby creating the illusion of depth.
+    The [Camera][] also contains a logic for following one or more player characters in the level
 
   * **Level**:
 
-    The Level is the representation of a single level during gameplay. It is the part that is
+    The [Level][] is the representation of a single level during gameplay. It is the part that is
     dynamically loaded and unloaded as the player advances from one level to the next.
 
   * **Loader**:
 
-    The Loader is used to asynchronously load levels into the scene graph since calls to
+    The `Loader` is used to asynchronously load levels into the scene graph since calls to
     `QQmlComponent::create()` blocked the UI and rendering thread, making the game become
-    unresponsive during loads. For more information, see our [workarounds section below](#23).
+    unresponsive during loads. For more information, see our [workarounds section below](#24).
 
   * **Actor**:
 
-    Perhaps the most important item class we defined for VoltAir is the Actor. It is the basic
-    character unit for our game. The Actor is a QQuickItem that holds onto the smaller building
-    blocks of the game scene. Each Actor has at least three classes of children:
-      * Graphics, which are responsible for drawing
-      * Body, which is the physical representation of the actor
-      * Logics, which are responsible for computation that is not performed by the physics
+    Perhaps the most important item class we defined for VoltAir is the [Actor][]. It is the basic
+    character unit for our game. The [Actor][] is a `QQuickItem` that holds onto the smaller
+    building blocks of the game scene. Each [Actor][] has at least three classes of children:
+      * [Graphic][]s, which are responsible for drawing
+      * [Body][], which is the physical representation of the actor
+      * [Logic][]s, which are responsible for computation that is not performed by the physics
 
   * **InputArea**:
 
@@ -260,26 +261,26 @@ What follows are the details about these various node types:
 
   * **Ui**:
 
-    The Ui serves as a manager for all possible viewing states of the games overlay UI, including
-    menus, splash or loading screens, and heads-up display (hud) information.
+    The [Ui][] serves as a manager for all possible viewing states of the games overlay UI,
+    including menus, splash or loading screens, and heads-up display (hud) information.
 
 The following diagram shows the layout of the main character in VoltAir, the [Robot][]. We see its
 graphics have many states that can be animated (e.g. its magnetism's visibility can change,
-its eyes can move, etc.). The Body is a circle so it can roll. Its logics handle behavioral aspects
-such as its rolling, player-input directed forces, etc.
+its eyes can move, etc.). The [Body][] is a circle so it can roll. Its logics handle behavioral
+aspects such as its rolling, player-input directed forces, etc.
 
 <img src="RobotBreakdown.jpg" width="500" alt="Robot Actor Breakdown">
 
-As we see, the Actors' subobjects are both `QQuickItem`s and `QObject`s. This table shows which are
-of which subclass (note how only objects involved in graphics traversal are `QQuickItem`s) and
-specific examples of their use in the game:
+As we see, an [Actor][]'s subobjects are both `QQuickItem`s and `QObject`s. This table shows more
+explicitly which are of which subclass (note how only objects involved in graphics traversal are
+`QQuickItem`s) and specific examples of their use in the game:
 
-| Class       | Inherits from | Description                                                                                                                                          | Examples                                            |
-|-------------|---------------|------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------|
-| [Actor][]   | `QQuickItem`  | Top-level element in the game. May contain Visuals, a Body, and Logics. <br> An actor defines the **composition** and configuration of its elements. | [Robot][], [Portal][], [Orb][], [ParticleEmitter][] |
-| [Graphic][] | `QQuickItem`  | Images or renderers defining the **look** of the actor.                                                                                              | [ImageRenderer][], [TerrainMeshRenderer][]          |
-| [Body][]    | `QObject`     | Defines the **physical body** of an actor, wraps Box2D body.                                                                                         | [CircleBody][], [PolygonBody][]                     |
-| [Logic][]   | `QObject`     | Logical **behavior** of the actor, evaluated every frame.                                                                                            | [RollingMovementLogic][], [ParticleEmitterLogic][]  |
+| Class       | Inherits from | Description                                                                                                                                                | Examples                                            |
+|-------------|---------------|------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------------------------------------------|
+| [Actor][]   | `QQuickItem`  | Top-level element in the game. May contain visuals, a physics body, and behavioral logics, defining the **composition** and configuration of its elements. | [Robot][], [Portal][], [Orb][], [ParticleEmitter][] |
+| [Graphic][] | `QQuickItem`  | `Image`s or [Renderer][]s defining the **look** of the [Actor][].                                                                                          | [ImageRenderer][], [TerrainMeshRenderer][]          |
+| [Body][]    | `QObject`     | Defines the **physical body** of an [Actor][], wraps Box2D body.                                                                                           | [CircleBody][], [PolygonBody][]                     |
+| [Logic][]   | `QObject`     | Logical **behavior** of the [Actor][], evaluated every frame.                                                                                              | [RollingMovementLogic][], [ParticleEmitterLogic][]  |
 
 **************************************************
 
@@ -288,18 +289,18 @@ specific examples of their use in the game:
 ### Motivation
 
 To achieve support for different "controller" types (i.e. input devices which could logically be
-used to control the robot character) and the use of multiple input sources, we implemented a
-separate input layer abstraction, [GameInput][], that could be re-used for handling controller input
-in a variety of controller-based applications.
+used to control the robot character) and multiple input sources, we implemented a separate input
+layer abstraction, [GameInput][], that could be re-used for handling controller input in a variety
+of controller-based applications.
 
 The need for such a system arose with the realization that Qt's event system based around `QEvent`
 did not support all desired controller types, nor did it support differentiation of input sources.
 Specifically, there does not currently exist a subclass of `QEvent` capable of representing
 real-valued axis events, and, instead, Qt's platform-dependent input handling delegates convert such
 input into `QKeyEvent`s (e.g. on Android, holding right on a thumbstick would generate a "right" key
-event). Furthermore, `QEvent` lacks the fundamental concept of device ID, meaning all input events
-(e.g. multiple button presses on different controllers) are indistinguishable from one another,
-which would prevent local multiplayer support.
+event). Furthermore, `QEvent` lacks the fundamental concept of device ID, meaning all identical
+input events on different controllers are indistinguishable from one another, which would prevent
+local multiplayer support.
 
 ### Goals
 
@@ -330,11 +331,11 @@ To that end, the GameInput library contains three major components:
   * **Device Shim Layer**
 
     Intermediate, platform-dependent module for converting device-specific events into general
-    platform-independent ControllerEvents and routing them to the appropriate InputRouter.
+    platform-independent [ControllerEvent][]s and routing them to the appropriate [InputRouter][].
 
   * **Game-Specific Client**
 
-    Application-dependent code that establishes how VirtualControllers are mapped to players,
+    Application-dependent code that establishes how [VirtualController][]s are mapped to players,
     defines the canonical set of schemes mapping inputs to actions, and provides mechanisms for
     querying of the state of particular player actions.
 
@@ -356,7 +357,7 @@ To that end, the GameInput library contains three major components:
 | Device Shim Layer Class                   | Description                                                                                                                                                                                                                                                                     |
 |-------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [VoltAirActivity][] / [AndroidActivity][] | Intercepts Android-specific input events (`KeyEvent`s and `MotionEvent`s) and converts them (via JNI) into [ControllerEvent][]s that are routed to the appropriate [InputRouter][] according to Android-defined input sources (e.g. keyboard vs. gamepad vs. touch navigation). |
-| [InputArea][]                             | Intercepts Qt key input events (`QKeyEvent`s) on non-Android platforms and converts them into [ControllerEvent][]s that are routed to the [KeyboardRouter][].                                                                                                                   |
+| [InputArea][]                             | Intercepts Qt key input events (`QKeyEvent`s) on non-Android platforms and converts them into [ControllerEvent][]s that are routed to the [KeyboardRouter][].                                                                                                                  |
 
 <br>
 
@@ -403,15 +404,15 @@ Android for the left arrow key:
 ### Motivation
 
 To achieve high enough performance in rendering of our game's scene (i.e. [Actor][]s such as terrain
-pieces, characters, and collectables), we implemented VoltAir's
-[game-specific renderer][GameRenderer], a simple 2D scene, OpenGL renderer, and use QtQuick's
-renderer exclusively for UI.
+pieces, characters, and collectables), we implemented VoltAir's [game-specific
+renderer][GameRenderer], a simple 2D scene, OpenGL renderer, and use QtQuick's renderer exclusively
+for the UI.
 
 The main objective for this renderer is simplicity, as our initial investigations indicated our
 target devices can achieve sufficient fill rate to render scenes of our game's complexity, even with
 naive draw calls and structure. Much of QtQuick's slowness appears to instead be caused by
-significant CPU overhead processing geometry (for example, to merge vertex batches) and the use of
-synchronous GL driver calls. This performance hit from this overhead is compounded by the fact that
+significant CPU overhead processing geometry (e.g. to merge vertex batches) and the use of
+synchronous GL driver calls. The performance hit from this overhead is compounded by the fact that
 we use fluid simulations, which are also CPU heavy.
 
 ### Goals
@@ -437,13 +438,13 @@ The renderer is composed of three main components, seen below:
 ### Techniques
 
 One of the techniques we used to render the world was our terrain shader. This draws many of the
-larger pieces of ground and terrain throughout the game.  To minimize the number of unique textures
+larger pieces of ground and terrain throughout the game. To minimize the number of unique textures
 we had to create, it uses multi-texture blends to create variation, using up to three textures at a
 time. The geometry and texture coordinates for the terrain were precomputed based on the terrain's
-physical collision mesh (by our level editor).
+physical collision mesh (by our in-house level editor).
 
-Another technique we used was our LiquidFun fluid renderer.  This takes the discrete particles that
-form the fluid simulation, and visualizes them as roughly blob-shaped entities.  Several effects are
+Another technique we used was our LiquidFun fluid renderer. This takes the discrete particles that
+form the fluid simulation, and visualizes them as roughly blob-shaped entities. Several effects are
 applied on top of this:
   * A highlight effect
   * A fake specular lighting effect
@@ -462,7 +463,7 @@ for the game. By contrast, items and classes such as [Asteroid][], [Orb][], [Sno
 [Ui][] are defined elsewhere, as these are objects unique to VoltAir-specific.
 
 The [VoltAir Engine][VoltAirEngine] can be thought of as a game engine in that it provides an
-infrastructure for building at least a certain class of games.  A full game engine, however, is more
+infrastructure for building at least a certain class of games. A full game engine, however, is more
 robust than what the VoltAir Engine provides. One can consider it an engine only to the extent that
 its engine qualities can be factored out and used for games other than VoltAir. If one were to
 do this, though, they may quickly run into its limitations and find that additional functionality
@@ -472,12 +473,12 @@ would need to be added.
 
 ## <a name="16"></a> Why is there all this JavaScript?
 
-JavaScript is supported out of the box by Qt through QtQuick and QML.
-While not required, using JavaScript expressions and blocks of functionality allowed for quick
-prototyping of our Actors because we could leverage dynamic properties and code to reduce
-compilation time with lower overhead and verbosity.  The end result allowed our Levels and Game
-logic to be more data driven, which we consider a success. While the JavaScript is less performant
-than the corresponding C++ logic in most scenarios, we did not find this to be overly prohibitive.
+JavaScript is supported out of the box by Qt through QtQuick and QML. While not required, using
+JavaScript expressions and blocks of functionality allowed for quick prototyping of our [Actor][]s
+because we could leverage dynamic properties and code to reduce compilation time with lower overhead
+and verbosity. The end result allowed our levels and game logic to be more data driven, which we
+consider a success. While the JavaScript is less performant than the corresponding C++ logic in most
+scenarios, we did not find this to be overly prohibitive, especially when prototyping.
 
 **************************************************
 
@@ -485,10 +486,9 @@ than the corresponding C++ logic in most scenarios, we did not find this to be o
 
 QtQuick's strongest feature by far is its abstraction for building user interfaces. It is, in fact,
 very well suited for the types of UIs you would expect in a game, where there is a lot of latitude
-taken in the UI element design and they are expected to animate. Given this, there is very little
-novel about VoltAir's UI.  We did build two important UI elements that were used extensively,
-and hence noteworthy:
-
+taken in the UI element design and animations are abundant. Given this, there is very little novel
+about VoltAir's UI. We did build two important UI elements that were used extensively, and hence
+noteworthy:
   * [UiComponent][]:
 
     This is the top level "page" in the UI. All UI elements animate on and off of the display.
@@ -507,9 +507,9 @@ and hence noteworthy:
 
 ## <a name="18"></a> If I want to develop my own new application based on the VoltAir source code, where do I start?
 
-Here are the rough steps you would take if you wanted to build a new game based on this source. The
-basic idea is to incrementally transform the current code base into your own game.  This is
-not a complete list, but is at least a starting point for interested developers:
+The basic idea to build a new game based on this source is to incrementally transform the current
+code base into your own game. The following is not a complete list, but is at least a starting
+point for interested developers:
 
   * Deep copy the entire repo.
   * Rename the `VoltAir` directory and the `VoltAir.pro` file to reflect the name of your new game.
@@ -535,63 +535,73 @@ not a complete list, but is at least a starting point for interested developers:
 
 ## <a name="19"></a> How did you integrate Box2D / LiquidFun?
 
-Box2D and LiquidFun form the backbone of our game's physics.  Each actor can have a physics body,
-which translates to a Box2D rigid body with fixtures.  We have synchronization phases before and
-after stepping the Box2D world to keep things in lock-step.  The same is true for LiquidFun.
-Particles are owned by emitters, and are synchronized at discrete points.
+Box2D and LiquidFun form the backbone of our game's physics. Each actor can have a physics body,
+which translates to a Box2D rigid body with fixtures. We have synchronization phases before and
+after stepping the Box2D world to keep things in lock-step. The same is true for LiquidFun.
+Particles are owned by emitters, and are synchronized at discrete points. For more information, see
+our wrapper [Body][], [Joints][], and [Particle][] wrapper classes.
 
-To visualize these physics shapes, actors have associated graphics.  These graphics, which can be
+To visualize these physics shapes, actors have associated graphics. These graphics, which can be
 anything from simple sprites to terrain pieces rendered using our terrain shader, are synchronized
-to their physics bodies by their actors during the synchronization phase.  Particles on the
+to their physics bodies by their actors during the synchronization phase. Particles on the
 otherhand are rendered all together using a single shader effect (with multiple passes).
 
 **************************************************
 
 ## <a name="20"></a> How could I use the different particle types in LiquidFun and what other additional features could I add to VoltAir?
 
-VoltAir only uses normal fluid particles.  However, LiquidFun also supports rigid, elastic, powder,
-spring, tensile, and wall particles.  Different ways to interact with the environment could come
-from experimenting with these different particle types.
+VoltAir only uses normal fluid particles. However, LiquidFun also supports rigid, elastic, powder,
+spring, tensile, and wall particles. Different ways to interact with the environment could  come
+from experimenting with these different particle types. See the [LiquidFun documentation][LiquidFun]
+for more information on how to use them.
 
-Exciting gameplay could emerge from making magnetic actors that repel instead of attract.  Or,
+Exciting gameplay could also emerge from making magnetic actors that repel instead of attract. Or,
 instead of magnetism powers, give the robot a water powered jetpack to zoom around the level!
 
-Consider adding a second player to the single player campaign.  Alternatively, give multiple
+Consider adding a second player to the single player campaign. Alternatively, give multiple
 players control of different parts of the robot and work together to finish the game!
+
+Try scripting and adding new [Actor][] types and throwing them into the levels.
+
+The possibilities for this type of platformer are nearly endless!
 
 **************************************************
 
 ## <a name="21"></a> Where is the level editor?
 
 Our level editor was developed in Java and represents a separate, incompatible runtime.
+
 As a result, we chose not to release it because of the added additional complexity to the
 open-source project (i.e. we could not provide a high enough standard to release and support it).
 
 **************************************************
 
-## <a name="22"></a> Why aren't use using Play Games Services C++ SDK?
+## <a name="22"></a> Why aren't you using the Play Games Services C++ SDK?
 
 Google Play Games Native SDK can be found [here][GPGS_SDK].
 
-The API was not released in time for us to integrate it into VoltAir.  Additionally, while in beta,
-the C++ SDK did not support cloud save.  We decided to integrate Play Games Services and Analytics
-natively through our own custom JNI wrapper.
+The API was not released in time for us to integrate it into VoltAir. Additionally, while in beta,
+the C++ SDK did not support cloud save.
+
+Instead, we decided to integrate Play Games Services and Analytics natively through our own custom
+JNI wrapper. Take a look at the code in [AndroidActivity][] and [SelfDetachingJNIEnv][] for examples
+and reusable boilerplate code of wrapping functionality that exists in Java and using it natively.
 
 **************************************************
 
 ## <a name="23"></a> What's the deal with the sound files in the open source code?
 
 Some of the sound files released in production are individually licensed to Google and could not be
-made open source.  We replaced these sound effects with placeholder sounds in the open source code.
+made open source. We replaced these sound effects with placeholder sounds in the open source code.
 
 **************************************************
 
 ## <a name="24"></a> What workarounds did you need to implement?
 
 In the process of implementing VoltAir on top of the QtQuick framework, we discovered a series of
-unrelated issues to that needed to be worked around in order to make it viable as a game platform.
+unrelated issues that needed to be worked around in order to make it viable as a game platform.
 
-We list gere some of the workarounds or issues we found interesting and hope they individually can
+We list here some of the workarounds or issues we found interesting and hope they individually can
 be extracted for some value:
   * **Lack of support for controller events with device ids and axis values**
 
@@ -611,9 +621,9 @@ be extracted for some value:
 
     Qt continued renderering even when the app was backgrounded, causing errors in addition to
     battery performance issues. First, in order to respond to lifecycle events appropriately, we
-    needed to install native callbacks (see [AndroidActivity][]). Second, on the event that the
+    needed to install native callbacks (see [AndroidActivity][]). Second, in the event that the
     application became backgrounded, we forced rendering to stop by hiding the  `QQuickView`
-    appropriately and informed all `QQuickItem` children in the UI of the device pause event.
+    appropriately and informed all `QQuickItem`s in the UI of the device pause event.
 
   * **JavaScript performance**
 
@@ -636,6 +646,15 @@ be extracted for some value:
     causes our memory footprint to rise dramatically with each new level loaded, even after deleting
     the previous level, and possibly longer load times as we must try reloading until the desired
     level is finally initialized.
+
+  * **High level load times when deserializing mesh vertex attribute data**
+
+    Originally, we initialized our mesh vertex attribute data using explicitly written arrays of
+    floats in QML, however, such an approach required excessive `QVariant` creation and copying, as
+    well as significantly more text processing, during level load and initialization.
+
+    Consequently, we switched over to encoding these large list of floats directly as binary data in
+    base64, slashing our load times but reducing clarity in our level data files.
 
   * **Gapless looping of audio**
 
@@ -663,7 +682,7 @@ be extracted for some value:
     Although, as our design above indicates, each [Actor][] has a [Body][] property that is
     optionally filled, our API does not explicitly declare such a property. This is because
     explicitly declaring the property as type [Body][] either in C++ or in QML restricts usage of
-    properties or functions on the type to those in the [Body][] base class, even if in QML or
+    properties or functions on the type to those in the [Body][] base class, even in QML or
     JavaScript, which are not as strongly-typed. For example, [Polygon][] actors would not be able
     to access `body.vertices` even if the `body` property had been set to use a [PolygonBody][].
 
@@ -674,30 +693,31 @@ be extracted for some value:
   * **Permissions in Android**
 
     By default, the `AndroidManifest.xml` generated by Qt leaves a replaceable macro
-    `%%INSERT_PERMISSIONS%%` in order to dynamically insert relevant permissions needed by the
+    `%%%INSERT_PERMISSIONS%%` in order to dynamically insert relevant permissions needed by the
     application depending upon the set of Qt modules used. However, due to the broad functional
     nature of some of the modules, in particular `multimedia`, this led to VoltAir requesting
     permissions it did not need. To reduce user confusion, and keep permissions restricted to the
     narrowest, workable set, we removed this tag from the manifest and manually added back in the
     required permissions.
 
-    As a result, though, one must be careful when using functionality that is already included in
-    the Qt libraries used with VoltAir, but for which our manifest may now lack the relevant
-    permission (e.g. recording audio through `QtMultimedia`).
+    As a result, one must be careful when using functionality that is already included in the Qt
+    libraries used with VoltAir but for which our manifest may now lack the relevant permission
+    (e.g. recording audio through `QtMultimedia`).
 
   * **QML Animations and Timers are built on wallclock time**
 
     There are several animated elements or sequences that can occur during VoltAir gameplay.
-    However, using QML animation groups and timers to accomplish this results in the animated
-    elements possibly running at a different rate from the game and, more importantly, makes them
-    difficult to pause and resume along with the game. We address this by introducing the concept of
-    "game time", advanced by each rendered frame of unpaused VoltAir gameplay, and providing helpful
-    primitives for using it in [StopwatchLogic][] and [AnimatedImageRenderer][]'s `useGameTime`
-    property.
+    However, using QML animation groups and timers to accomplish these effects results in the
+    animated elements possibly running at a different rate from the game and, more importantly,
+    makes them difficult to pause and resume along with the game.
+
+    We address this by introducing the concept of "game time", advanced by each rendered frame of
+    unpaused VoltAir gameplay, and by providing helpful primitives for using it in
+    [StopwatchLogic][] and [AnimatedImageRenderer][]'s `useGameTime` property.
 
   * <strong>QML Item `transitions` can be interrupted</strong>
 
-    `Transition` animation groups written as part of an Item's `transitions` can be interrupted
+    `Transition` animation groups written as part of an `Item`'s `transitions` can be interrupted
     and stopped before completion if another transition occurs, rather than being completed in
     sequence or parallel with the newly triggered `Transition`. Specifically, if we have defined a
     transition from state `A` to state `B` and a transition from state `B` to state `C`, then the
@@ -712,7 +732,7 @@ be extracted for some value:
     function calls that kicked off "background" transition animations on other `Item`s that would
     not be interrupted. More specifically, we introduced the fundamental UI building block in the
     [UiComponent][] which can show or hide itself, reducing pressure on [Ui][], the main manager of
-    all possible UI viewing states getting stuck in an intermediate state due to responding to
+    all possible UI viewing states, getting stuck in an intermediate state due to responding to
     user input.
 
   * <strong>Why we need `Renderer::addCompatibilityPrefixToShaderCode`</strong>
@@ -738,9 +758,8 @@ be extracted for some value:
   * **Initialization ordering issues**
 
     The UI, upon creation, needs to access managers, like [TextureManager][], which has yet to be
-    created and initialized.  As a result, we delayed creation of the [Ui][] `Item` until after
-    these dependencies had been initialized and then dynamically inserted the UI into the scene
-    graph.
+    created and initialized. As a result, we delayed creation of the [Ui][] `Item` until after
+    these dependencies had been initialized and then dynamically insert the UI into the scene graph.
 
 [APIReference]: ../../API-Ref/html/annotated.html
 [Contributing]: ../../contributing/html/index.html
@@ -775,6 +794,7 @@ be extracted for some value:
 [InputRouter]: ../../API-Ref/html/classInputRouter.html
 [InputScheme]: ../../API-Ref/html/classInputScheme.html
 [JavaScriptLogic]: ../../API-Ref/html/classJavaScriptLogic.html
+[Joints]: ../../API-Ref/html/classJoints.html
 [JoystickAxisScheme]: ../../API-Ref/html/classJoystickAxisScheme.html
 [KeyNavFocusArea]: ../../API-Ref/html/classKeyNavFocusArea.html
 [KeyScheme]: ../../API-Ref/html/classKeyScheme.html
@@ -783,15 +803,19 @@ be extracted for some value:
 [Logic]: ../../API-Ref/html/classLogic.html
 [Main]: ../../API-Ref/html/classmain.html
 [Orb]: ../../API-Ref/html/classOrb.html
+[Particle]: ../../API-Ref/html/classParticle.html
 [ParticleEmitterLogic]: ../../API-Ref/html/classParticleEmitterLogic.html
 [ParticleEmitter]: ../../API-Ref/html/classParticleEmitter.html
 [PlayerManager]: ../../API-Ref/html/classPlayerManager.html
-[PolygonBody]: ../../API-Ref/html/classPolygonBody.html
 [Polygon]: ../../API-Ref/html/classPolygon.html
+[PolygonBody]: ../../API-Ref/html/classPolygonBody.html
+[PolygonVertexAttributeArray]: ../../API-Ref/html/classPolygonVertexAttributeArray.html
 [Portal]: ../../API-Ref/html/classPortal.html
 [QQmlListPropertyOnQList]: ../../API-Ref/html/classUtil_1_1QQmlListPropertyOnQList.html
+[Renderer]: ../../API-Ref/html/classRenderer.html
 [Robot]: ../../API-Ref/html/classRobot.html
 [RollingMovementLogic]: ../../API-Ref/html/classRollingMovementLogic.html
+[SelfDetachingJNIEnv]: ../../API-Ref/html/classSelfDetachingJNIEnv.html
 [Snowflake]: ../../API-Ref/html/classSnowflake.html
 [SoundManager]: ../../API-Ref/html/classcom_1_1google_1_1fpl_1_1utils_1_1SoundManager.html
 [StopwatchLogic]: ../../API-Ref/html/classStopwatchLogic.html

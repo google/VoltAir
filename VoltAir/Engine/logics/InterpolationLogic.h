@@ -26,6 +26,7 @@
 class TriggerEvent;
 
 /**
+ * @ingroup Engine
  * @ingroup QmlQObject
  * @brief Interpolates #target's #targetProperty value between #beginValue and #endValue.
  * @note Currently, InterpolationLogic supports the following types for interpolation:

@@ -22,6 +22,7 @@
 class b2ParticleSystem;
 
 /**
+ * @ingroup Engine
  * @ingroup QmlQObject
  * @brief Wrapper around a @c b2ParticleSystem, which represents an independent layer of particles.
  *

@@ -29,6 +29,7 @@ class ParticleRendererItem;
 class b2World;
 
 /**
+ * @ingroup Engine
  * @brief Representation of an in-game level.
  *
  * A Level is a discrete section of the game, each with a well defined start and end. Most Level%s

@@ -24,6 +24,7 @@
 #include <memory>
 
 /**
+ * @ingroup Engine
  * @ingroup QQuickItem
  * @brief QQuickItem which represents the Camera into the game world.
  *

@@ -24,6 +24,7 @@ class RevoluteJoint;
 class WeldJoint;
 
 /**
+ * @ingroup Engine
  * @brief Factory class for creating Joint%s from QML.
  */
 class Joints : public QObject {

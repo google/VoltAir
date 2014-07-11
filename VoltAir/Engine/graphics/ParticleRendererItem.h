@@ -27,6 +27,7 @@ class b2ParticleSystem;
 struct b2AABB;
 
 /**
+ * @ingroup Engine
  * @brief Structure holding the state for shaders used in ParticleRenderItem.
  *
  * Some shaders may use only use a subset of these states.

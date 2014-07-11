@@ -23,6 +23,7 @@
 #include <QRectF>
 
 /**
+ * @ingroup Engine
  * @brief Namespace containing frequently used static helper functions related to Box2D.
  */
 namespace Box2dUtil {

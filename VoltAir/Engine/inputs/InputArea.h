@@ -24,6 +24,7 @@
 #include <QSet>
 
 /**
+ * @ingroup Engine
  * @ingroup QQuickItem
  * @brief Ui module for gaining basic input event (i.e. keyboard) support on non-Android devices.
  *

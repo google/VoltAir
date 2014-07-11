@@ -21,6 +21,7 @@
 #include "Actor.h"
 
 /**
+ * @ingroup Engine
  * @ingroup QmlQObject
  * @brief Non-visual entities in the QML item tree that define behavior for their parent Actor.
  *

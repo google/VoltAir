@@ -23,6 +23,7 @@ class Body;
 class ContactTrigger;
 
 /**
+ * @ingroup Engine
  * @brief Handler for notifications of ContactEvent%s from the @c b2World.
  */
 class ContactListener : public b2ContactListener {

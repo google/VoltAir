@@ -24,6 +24,7 @@
 #include <jni.h>
 
 /**
+ * @ingroup Engine
  * @brief Smart wrapper around JNIEnv which retains information of how the environment was loaded.
  *
  * If the current thread has attached to a JavaVM, then this wrapper will detach the current thread

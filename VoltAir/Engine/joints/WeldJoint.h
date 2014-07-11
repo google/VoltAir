@@ -20,6 +20,7 @@
 #include "Joint.h"
 
 /**
+ * @ingroup Engine
  * @brief A constraint that fixes the relative positions of two Body%s.
  */
 class WeldJoint : public Joint {

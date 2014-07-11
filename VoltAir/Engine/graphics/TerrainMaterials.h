@@ -23,6 +23,7 @@
 class TerrainMaterial;
 
 /**
+ * @ingroup Engine
  * @brief Class managing a collection of TerrainMaterialDef%s.
  *
  * This class loads TerrainMaterialDef%s from a JSON file, and allows them to be looked up by name.

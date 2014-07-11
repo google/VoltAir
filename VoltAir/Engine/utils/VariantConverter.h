@@ -24,6 +24,7 @@
 #include <QVariant>
 
 /**
+ * @ingroup Engine
  * @brief Base template class for VariantConverter.
  *
  * This class defines a base implementation for the toVariant() method which is valid for any
@@ -47,6 +48,7 @@ public:
 };
 
 /**
+ * @ingroup Engine
  * @brief Helper template class to convert QVariant%s to and from a specific type, for example,
  * QPointF%s.
  * @note Template specializations perform the conversions of QVariant%s to specific types, while the
@@ -58,6 +60,7 @@ class VariantConverter : public VariantConverterBase<T> {
 };
 
 /**
+ * @ingroup Engine
  * @brief Helper template class to convert QVariant%s to and from @c int%s.
  * @see VariantConverter for more information.
  */
@@ -74,6 +77,7 @@ public:
 };
 
 /**
+ * @ingroup Engine
  * @brief Helper template class to convert QVariant%s to and from QString%s.
  * @see VariantConverter
  */
@@ -90,6 +94,7 @@ public:
 };
 
 /**
+ * @ingroup Engine
  * @brief Helper template class to convert QVariant%s to and from QJsonObject%s.
  * @see VariantConverter
  */
@@ -114,6 +119,7 @@ public:
 };
 
 /**
+ * @ingroup Engine
  * @brief Helper template class to convert QVariant%s to and from QPointF%s.
  * @see VariantConverter
  */
@@ -140,6 +146,7 @@ public:
 };
 
 /**
+ * @ingroup Engine
  * @brief Helper template class to convert QVariantMap%s to and from QMap%s with a convertable
  * value type @c T.
  * @tparam Template type which can be converted by VariantConverter to and from a QVariant
@@ -179,6 +186,7 @@ public:
 };
 
 /**
+ * @ingroup Engine
  * @brief Helper template class to convert QVariantList%s to and from QSet%s with a convertable
  * value type @c T.
  * @tparam Template type which can be converted by VariantConverter to and from a QVariant

@@ -23,6 +23,7 @@
 class Actor;
 
 /**
+ * @ingroup Engine
  * @brief Frequently used constants.
  *
  * These constants are defined globally so they can be used when a return by reference is needed.

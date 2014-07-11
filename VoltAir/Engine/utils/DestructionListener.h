@@ -22,6 +22,7 @@
 class Joint;
 
 /**
+ * @ingroup Engine
  * @brief Handler for object destruction notifications in @c b2World.
  *
  * Implements @c b2DestructionListener. Used by Engine to clean up resources on destruction of

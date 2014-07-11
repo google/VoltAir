@@ -22,6 +22,7 @@
 #include <QVariant>
 
 /**
+ * @ingroup Engine
  * @brief Tracks and provides mechanisms for reporting various debug metrics.
  *
  * Current metrics that are supported include: frames rendered per second and application memory

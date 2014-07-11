@@ -24,6 +24,7 @@ class Camera;
 class QRectF;
 
 /**
+ * @ingroup Engine
  * @brief Logic to make the camera follow the bounding box of all Actor::PlayerActor%s.
  *
  * The camera's field of view (fov) adjusts according to the size of the bounding box of all

@@ -22,6 +22,7 @@
 class RenderList;
 
 /**
+ * @ingroup Engine
  * @ingroup QQuickItem
  * @brief Base class for visual elements which are part of the game scene, and are rendered through
  * Renderer.

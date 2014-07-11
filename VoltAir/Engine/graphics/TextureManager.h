@@ -22,6 +22,7 @@
 #include "renderer/PointerDeclarations.h"
 
 /**
+ * @ingroup Engine
  * @brief Class which loads and caches Texture%s.
  *
  * Textures are loaded as QSGTexture%s and wrapped into Texture objects. Returned textures are

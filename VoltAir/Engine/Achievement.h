@@ -22,6 +22,7 @@
 class QJsonObject;
 
 /**
+ * @ingroup Engine
  * @brief Representation of a Google Play Games Services achievement.
  *
  * This class represents the current state of an application-defined achievement and provides

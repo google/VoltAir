@@ -25,6 +25,7 @@ class Body;
 class Logic;
 
 /**
+ * @ingroup Engine
  * @brief Representation of an entity within the Game scene.
  *
  * Actor%s are owned by a Level, and are composed of Logic%s, Graphic%s, and optionally a Body.

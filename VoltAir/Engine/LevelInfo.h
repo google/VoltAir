@@ -23,6 +23,7 @@
 class Environment;
 
 /**
+ * @ingroup Engine
  * @brief Metadata for a Level.
  *
  * The information contained in LevelInfo can be used to load and display a Level.

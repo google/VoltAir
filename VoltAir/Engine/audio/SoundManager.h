@@ -25,6 +25,7 @@
 #include "SoundEffectInstance.h"
 
 /**
+ * @ingroup Engine
  * @brief Controls the sound effects and background music (BGM) audio tracks needed to be played
  * during the game.
  *

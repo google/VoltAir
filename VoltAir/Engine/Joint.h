@@ -22,6 +22,7 @@
 class Body;
 class b2Joint;
 /**
+ * @ingroup Engine
  * @brief A constraint between two Body%s.
  */
 class Joint : public QObject {

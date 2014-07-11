@@ -21,6 +21,7 @@
 #include <QVariant>
 
 /**
+ * @ingroup Engine
  * @ingroup QmlQObject
  * @brief Class storing the values in a vertex attribute array, instantiable from QML.
  *

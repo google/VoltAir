@@ -23,6 +23,7 @@
 #include "renderer/RendererCommon.h"
 
 /**
+ * @ingroup Engine
  * @brief Selector key which picks the specific terrain shader variant to use.
  * @see TerrainShader::getSharedShader()
  */

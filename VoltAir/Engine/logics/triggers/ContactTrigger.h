@@ -22,6 +22,7 @@
 #include "logics/events/ContactEvent.h"
 
 /**
+ * @ingroup Engine
  * @ingroup QmlQObject
  * @brief Listens to ContactEvent%s between the parent Actor's Body and another body of the
  * specified ActorType.

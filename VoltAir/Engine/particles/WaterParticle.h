@@ -20,6 +20,7 @@
 #include "Particle.h"
 
 /**
+ * @ingroup Engine
  * @brief A Particle which destroys itself after a decay time has elapsed.
  */
 class WaterParticle : public Particle {

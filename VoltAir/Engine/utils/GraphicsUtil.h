@@ -20,6 +20,7 @@
 class QOpenGLFunctions;
 
 /**
+ * @ingroup Engine
  * @brief Frequently used, static, graphics-related utility functions.
  */
 namespace GraphicsUtil

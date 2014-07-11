@@ -20,6 +20,7 @@
 #include <QQuickItem>
 
 /**
+ * @ingroup Engine
  * @ingroup QQuickItem
  * @brief Ui element item that defines the basis for a visual and touch based VirtualController.
  *

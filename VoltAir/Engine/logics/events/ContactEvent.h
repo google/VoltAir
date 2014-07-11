@@ -22,6 +22,7 @@
 class Body;
 
 /**
+ * @ingroup Engine
  * @ingroup QmlQObject
  * @brief Raised when two Body%s begin or end contact with each other.
  */

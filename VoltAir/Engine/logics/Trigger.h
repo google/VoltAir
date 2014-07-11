@@ -25,6 +25,7 @@
 class TriggerEvent;
 
 /**
+ * @ingroup Engine
  * @ingroup QmlQObject
  * @brief Listens for one or more events (TriggerEvent) and calls an event handler (handleEvent())
  * in response to received events.
@@ -61,6 +62,7 @@ Q_DECLARE_METATYPE(Trigger*)
 
 
 /**
+ * @ingroup Engine
  * @brief Abstract base class for events which can be handled by Trigger%s.
  */
 class TriggerEvent : public QObject {

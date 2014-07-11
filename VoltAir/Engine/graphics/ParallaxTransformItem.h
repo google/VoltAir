@@ -22,6 +22,7 @@
 class Actor;
 
 /**
+ * @ingroup Engine
  * @ingroup QQuickItem
  * @brief QQuickItem which applies a translation to children, giving the illusion of parallax
  * scrolling.

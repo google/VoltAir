@@ -21,6 +21,7 @@
 #include "WaterParticle.h"
 
 /**
+ * @ingroup Engine
  * @brief A collection of WaterParticle%s which can perform updates each frame.
  *
  * This class is used to track particles which came from the same logical source, for example a

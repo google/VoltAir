@@ -20,6 +20,7 @@
 #include "ImageRenderer.h"
 
 /**
+ * @ingroup Engine
  * @ingroup QQuickItem
  * @brief Graphic based on ImageRenderer which displays a frame animation from a texture sheet.
  *

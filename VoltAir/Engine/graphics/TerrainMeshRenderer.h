@@ -29,6 +29,7 @@ class TerrainShader;
 typedef std::shared_ptr<TerrainShader> TerrainShaderPtr;
 
 /**
+ * @ingroup Engine
  * @ingroup QQuickItem
  * @brief Graphic which performs rendering of a terrain mesh.
  *

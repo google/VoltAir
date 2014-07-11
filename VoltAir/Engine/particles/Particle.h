@@ -23,6 +23,7 @@
 class ParticleLayer;
 
 /**
+ * @ingroup Engine
  * @brief Wrapper around a LiquidFun particle.
  *
  * When createNewParticle() is called, a new LiquidFun particle is spawned, and its user data

@@ -25,6 +25,7 @@ class LevelInfo;
 class LevelProgression;
 
 /**
+ * @ingroup Engine
  * @brief Grouping of related LevelInfo%s together into an logical, ordered list.
  *
  * This class also contains metadata that defines the Environment and can be used for loading or

@@ -31,6 +31,7 @@ class QUrl;
 class QWindow;
 
 /**
+ * @ingroup Engine
  * @brief Frequently used static utility functions.
  */
 namespace Util {
@@ -106,6 +107,7 @@ QMap<QString, T> toMap(const QVariantMap& map) {
 }
 
 /**
+ * @ingroup Engine
  * @brief Helper class which creates QQmlListProperty objects directly on QList members fields.
  *
  * The location of the member field is declared as a template parameter.

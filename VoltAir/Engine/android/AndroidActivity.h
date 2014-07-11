@@ -34,6 +34,7 @@ class ControllerEvent;
 class QKeyEvent;
 
 /**
+ * @ingroup Engine
  * @brief JNI interface for the main Android activity.
  *
  * This static class contains both native callbacks used by the Android activity and methods that

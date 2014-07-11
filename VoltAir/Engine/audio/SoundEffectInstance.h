@@ -22,6 +22,7 @@
 class QSoundEffect;
 
 /**
+ * @ingroup Engine
  * @brief An instance of a sound effect.
  *
  * Separate instances of a sound effect can have different properties (i.e. volume, looped, etc.)

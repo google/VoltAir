@@ -22,6 +22,7 @@
 #include "PolygonVertexAttributeArray.h"
 
 /**
+ * @ingroup Engine
  * @ingroup QmlQObject
  * @brief Class storing a renderable mesh, instantiable from QML.
  *

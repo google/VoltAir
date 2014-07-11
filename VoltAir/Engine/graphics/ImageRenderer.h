@@ -27,6 +27,7 @@ class Body;
 class QSGTexture;
 
 /**
+ * @ingroup Engine
  * @ingroup QQuickItem
  * @brief Graphic which displays a texture as an image.
  *

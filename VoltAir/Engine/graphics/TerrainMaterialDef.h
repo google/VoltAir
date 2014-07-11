@@ -20,6 +20,7 @@
 #include <QVariant>
 
 /**
+ * @ingroup Engine
  * @brief Definition of a terrain material.
  *
  * A terrain material blends up to three textures:

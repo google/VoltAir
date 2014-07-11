@@ -20,6 +20,7 @@
 #include "Logic.h"
 
 /**
+ * @ingroup Engine
  * @ingroup QmlQObject
  * @brief Extends Logic to include custom behavior defined via JavaScript code in Qml files.
  *

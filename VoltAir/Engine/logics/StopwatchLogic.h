@@ -20,6 +20,7 @@
 #include "Logic.h"
 
 /**
+ * @ingroup Engine
  * @ingroup QmlQObject
  * @brief Defines a stopwatch which triggers any callbacks connected to timeElapsed() after #time
  * game-time seconds have elapsed.

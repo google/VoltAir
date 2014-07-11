@@ -21,6 +21,7 @@
 #include <QUrl>
 
 /**
+ * @ingroup Engine
  * @brief QML accessible versions of the Util functions.
  *
  * This is a singleton class that simply contains a mapping from Util namespace functions to QML.

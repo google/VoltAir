@@ -20,6 +20,7 @@
 #include <Box2D/Box2D.h>
 
 /**
+ * @ingroup Engine
  * @brief Implementation of @c b2Draw which renders objects (body fixtures, particles, etc.) using
  * DebugRenderer.
  *

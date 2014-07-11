@@ -20,6 +20,7 @@
 #include "Body.h"
 
 /**
+ * @ingroup Engine
  * @brief A QObject container for a Box2D @c b2Body that represents a circle.
  */
 class CircleBody : public Body {

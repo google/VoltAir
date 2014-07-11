@@ -20,6 +20,7 @@
 #include "Joint.h"
 
 /**
+ * @ingroup Engine
  * @brief A constraint that fixes the distance between each Body%s anchor point.
  * @note The current implementations assumes the distance between each point is 0.
  */

@@ -638,9 +638,10 @@ void AndroidActivity::sendTrackerEvent(const QString& category, const QString& a
     jstring javaCategory = jni->NewStringUTF(nativeCategory.c_str());
     jstring javaAction = jni->NewStringUTF(nativeAction.c_str());
     jstring javaLabel = jni->NewStringUTF(nativeLabel.c_str());
+    jlong javaValue = value;
 
     jni->CallVoidMethod(getActivity(), sendTrackerEventMethod, javaCategory, javaAction, javaLabel,
-            value);
+            javaValue);
     jni->DeleteLocalRef(javaCategory);
     jni->DeleteLocalRef(javaAction);
     jni->DeleteLocalRef(javaLabel);
@@ -660,8 +661,9 @@ void AndroidActivity::sendTrackerEvent(const QString& category, const QString& a
     std::string nativeAction = action.toStdString();
     jstring javaCategory = jni->NewStringUTF(nativeCategory.c_str());
     jstring javaAction = jni->NewStringUTF(nativeAction.c_str());
+    jlong javaValue = value;
 
-    jni->CallVoidMethod(getActivity(), sendTrackerEventMethod, javaCategory, javaAction, value);
+    jni->CallVoidMethod(getActivity(), sendTrackerEventMethod, javaCategory, javaAction, javaValue);
     jni->DeleteLocalRef(javaCategory);
     jni->DeleteLocalRef(javaAction);
 }

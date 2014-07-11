@@ -1,0 +1,11 @@
+URL: https://github.com/jhasse/poly2tri
+Version: commit 91d1203c3a1c43ee10f3ad662edaf21a351316b3 (software is not versioned).
+License: New BSD
+License File: LICENSE
+
+Description:
+Simple Delaunay triangulation framework
+
+Local Modifications:
+Minor changes to remove warnings during build. Diffs can be viewed in:
+third_party/poly2tri.patch

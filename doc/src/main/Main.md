@@ -8,7 +8,7 @@ The VoltAir Project {#mainpage}
     <li>[Overview](#1)</li>
     <li>[Getting Started][GettingStarted]</li>
     <li>[Contributing][]</li>
-    <li>[Documentation][APIReference]</li>
+    <li>[API Reference][APIReference]</li>
   </ul>
 </div>
 
@@ -26,7 +26,7 @@ The VoltAir Project {#mainpage}
 12. [What is the high-level design of VoltAir?](#12)
 13. [What is GameInput, why did you build it, and how do you use it?](#13)
 14. [What is the VoltAir Renderer and what are some tricks behind the visuals?](#14)
-15. [What is the VoltAir Engine, and can it really be used as a game engine?](#15)
+15. [What is the VoltAir Engine, and is it really a game engine?](#15)
 16. [Why is there all this JavaScript?](#16)
 17. [How did you design the UI?](#17)
 18. [If I want to develop my own new application based on the VoltAir source code, where do I
@@ -246,7 +246,7 @@ What follows are the details about these various node types:
 
   * **Actor**:
 
-    Perhaps the most important item class we defined for Voltair is the Actor. It is the basic
+    Perhaps the most important item class we defined for VoltAir is the Actor. It is the basic
     character unit for our game. The Actor is a QQuickItem that holds onto the smaller building
     blocks of the game scene. Each Actor has at least three classes of children:
       * Graphics, which are responsible for drawing
@@ -453,9 +453,20 @@ These effects were chosen to help the particles blend in with the game world.
 
 **************************************************
 
-## <a name="15"></a> What is the VoltAir Engine, and can it really be used as a game engine?
+## <a name="15"></a> What is the VoltAir Engine, and is it really a game engine?
 
-TODO: Insert something here.
+As we developed the code, we made an effort to separate out the code that was not specific to
+the VoltAir game itself. This code is found in the `Engine` directory. For instance, [Camera][],
+[Actor][], [Body][], [Logic][], etc. are all defined in `Engine`, as is the [main QML item][Main]
+for the game. By contrast, items and classes such as [Asteroid][], [Orb][], [Snowflake][], and
+[Ui][] are defined elsewhere, as these are objects unique to VoltAir-specific.
+
+The [VoltAir Engine][VoltAirEngine] can be thought of as a game engine in that it provides an
+infrastructure for building at least a certain class of games.  A full game engine, however, is more
+robust than what the VoltAir Engine provides. One can consider it an engine only to the extent that
+its engine qualities can be factored out and used for games other than VoltAir. If one were to
+do this, though, they may quickly run into its limitations and find that additional functionality
+would need to be added.
 
 **************************************************
 
@@ -496,7 +507,29 @@ and hence noteworthy:
 
 ## <a name="18"></a> If I want to develop my own new application based on the VoltAir source code, where do I start?
 
-TODO: Insert something here.
+Here are the rough steps you would take if you wanted to build a new game based on this source. The
+basic idea is to incrementally transform the current code base into your own game.  This is
+not a complete list, but is at least a starting point for interested developers:
+
+  * Deep copy the entire repo.
+  * Rename the `VoltAir` directory and the `VoltAir.pro` file to reflect the name of your new game.
+  * Navigate into the `Engine` directory and perform a recursive, case-insensitive search for
+    "voltair" to lead you to places where names must be changed.
+  * Familiarize yourself with the QML-defined actors in `VoltAir/qml/actors`.
+    * Notice how they each have [Body][] items that define their physics behavior and [Logic][]
+      items that implement other behaviors.
+    * Pay close attention to the [Robot][] actor and how data is passed from its [GameInputLogic][]
+      item (via `inputForce`) to its [JavaScriptLogic][] item which consumes the data. This is
+      how user input affects the world.
+  * Familiarize yourself with the QML-defined levels in `VoltAir/assets/levels`. Note how they
+    instantiate the actors you learned of earlier.
+  * Mimic the actors and levels to define your game. Swap out VoltAir's levels for your own in
+    `VoltAir/qml/VoltAirLevelProgressionList.qml`.
+  * Once this is working, go back and rewrite the [Ui][] item to use your own game's user interface.
+  * If you plan on deploying Google Analytics or Play Games Services, you will have to
+    replace VoltAir's definitions, found here:
+    * `VoltAir/Engine/android/deploy/res/xml/voltair_tracker.xml`: Analytics tracking ID.
+    * `VoltAir/Engine/android/deploy/res/values/ids.xml`: Play Games Services Achievement IDs.
 
 **************************************************
 
@@ -704,63 +737,69 @@ be extracted for some value:
 
   * **Initialization ordering issues**
 
-    The UI, upon creation, needs to access managers, like [Texturemanager][], which has yet to be
+    The UI, upon creation, needs to access managers, like [TextureManager][], which has yet to be
     created and initialized.  As a result, we delayed creation of the [Ui][] `Item` until after
     these dependencies had been initialized and then dynamically inserted the UI into the scene
     graph.
 
-[VoltAir]: https://play.google.com/store/apps/details?id=com.google.fpl.voltair
-[GettingStarted]: ../../gettingStarted/html/index.html
 [APIReference]: ../../API-Ref/html/annotated.html
 [Contributing]: ../../contributing/html/index.html
-[Qt]: http://qt-project.org/
-[QtQuick]: http://qt-project.org/doc/qt-5/qtquick-index.html
+[GPGS_SDK]: https://developers.google.com/games/services/cpp/GettingStartedNativeClient
+[GameInput]: ../../API-Ref/html/group__GameInput.html
+[GettingStarted]: ../../gettingStarted/html/index.html
+[LiquidFun]: https://google.github.io/liquidfun/
+[MediaPlayer]: http://developer.android.com/reference/android/media/MediaPlayer.html
 [QtCreator]: http://qt-project.org/wiki/category:tools::qtcreator
 [QtLicense]: http://qt-project.org/doc/qt-5/lgpl.html
-[LiquidFun]: https://google.github.io/liquidfun/
-[InputArea]: ../../API-Ref/html/classInputArea.html
-[GameInput]: ../../API-Ref/html/group__GameInput.html
+[QtQuick]: http://qt-project.org/doc/qt-5/qtquick-index.html
+[Qt]: http://qt-project.org/
+[VoltAir]: https://play.google.com/store/apps/details?id=com.google.fpl.voltair
+
 [Actor]: ../../API-Ref/html/classActor.html
-[Graphic]: ../../API-Ref/html/classGraphic.html
-[Body]: ../../API-Ref/html/classBody.html
-[Logic]: ../../API-Ref/html/classLogic.html
-[Robot]: ../../API-Ref/html/classRobot.html
-[Portal]: ../../API-Ref/html/classPortal.html
-[Orb]: ../../API-Ref/html/classOrb.html
-[ParticleEmitter]: ../../API-Ref/html/classParticleEmitter.html
-[ImageRenderer]: ../../API-Ref/html/classImageRenderer.html
-[TerrainMeshRenderer]: ../../API-Ref/html/classTerrainMeshRenderer.html
-[CircleBody]: ../../API-Ref/html/classCircleBody.html
-[PolygonBody]: ../../API-Ref/html/classPolygonBody.html
-[RollingMovementLogic]: ../../API-Ref/html/classRollingMovementLogic.html
-[ParticleEmitterLogic]: ../../API-Ref/html/classParticleEmitterLogic.html
-[ControllerEvent]: ../../API-Ref/html/classControllerEvent.html
-[VirtualController]: ../../API-Ref/html/classVirtualController.html
-[InputScheme]: ../../API-Ref/html/classInputScheme.html
-[KeyScheme]: ../../API-Ref/html/classKeyScheme.html
-[JoystickAxisScheme]: ../../API-Ref/html/classJoystickAxisScheme.html
-[TriggerAxisScheme]: ../../API-Ref/html/classTriggerAxisScheme.html
-[ControllerFactory]: ../../API-Ref/html/classControllerFactory.html
-[GamepadControllerFactory]: ../../API-Ref/html/classGamepadRouter_1_1GamepadControllerFactory.html
-[InputRouter]: ../../API-Ref/html/classInputRouter.html
-[GamepadRouter]: ../../API-Ref/html/classGamepadRouter.html
-[ControllerManager]: ../../API-Ref/html/classControllerManager.html
-[VoltAirActivity]: ../../API-Ref/html/classVoltAirActivity.html
 [AndroidActivity]: ../../API-Ref/html/classAndroidActivity.html
-[KeyboardRouter]: ../../API-Ref/html/classKeyboardRouter.html
-[PlayerManager]: ../../API-Ref/html/classPlayerManager.html
-[GameInputLogic]: ../../API-Ref/html/classGameInputLogic.html
-[KeyboardControllerFactory]: ../../API-Ref/html/classKeyboardRouter_1_1KeyboardControllerFactory.html
-[UiComponent]: ../../API-Ref/html/classUiComponent.html
-[KeyNavFocusArea]: ../../API-Ref/html/classKeyNavFocusArea.html
-[GPGS_SDK]: https://developers.google.com/games/services/cpp/GettingStartedNativeClient
-[MediaPlayer]: http://developer.android.com/reference/android/media/MediaPlayer.html
-[SoundManager]: ../../API-Ref/html/classcom_1_1google_1_1fpl_1_1utils_1_1SoundManager.html
-[QQmlListPropertyOnQList]: ../../API-Ref/html/classUtil_1_1QQmlListPropertyOnQList.html
-[Polygon]: ../../API-Ref/html/classPolygon.html
-[PolygonBody]: ../../API-Ref/html/classPolygonBody.html
-[StopwatchLogic]: ../../API-Ref/html/classStopwatchLogic.html
 [AnimatedImageRenderer]: ../../API-Ref/html/classAnimatedImageRenderer.html
-[Ui]: ../../API-Ref/html/classUi.html
+[Asteroid]: ../../API-Ref/html/classAsteroid.html
+[Body]: ../../API-Ref/html/classBody.html
+[Camera]: ../../API-Ref/html/classCamera.html
+[CircleBody]: ../../API-Ref/html/classCircleBody.html
+[ControllerEvent]: ../../API-Ref/html/classControllerEvent.html
+[ControllerFactory]: ../../API-Ref/html/classControllerFactory.html
+[ControllerManager]: ../../API-Ref/html/classControllerManager.html
+[GameInputLogic]: ../../API-Ref/html/classGameInputLogic.html
 [GameRenderer]: ../../API-Ref/html/group__Renderer.html
+[GamepadControllerFactory]: ../../API-Ref/html/classGamepadRouter_1_1GamepadControllerFactory.html
+[GamepadRouter]: ../../API-Ref/html/classGamepadRouter.html
+[Graphic]: ../../API-Ref/html/classGraphic.html
+[ImageRenderer]: ../../API-Ref/html/classImageRenderer.html
+[InputArea]: ../../API-Ref/html/classInputArea.html
+[InputRouter]: ../../API-Ref/html/classInputRouter.html
+[InputScheme]: ../../API-Ref/html/classInputScheme.html
+[JavaScriptLogic]: ../../API-Ref/html/classJavaScriptLogic.html
+[JoystickAxisScheme]: ../../API-Ref/html/classJoystickAxisScheme.html
+[KeyNavFocusArea]: ../../API-Ref/html/classKeyNavFocusArea.html
+[KeyScheme]: ../../API-Ref/html/classKeyScheme.html
+[KeyboardControllerFactory]: ../../API-Ref/html/classKeyboardRouter_1_1KeyboardControllerFactory.html
+[KeyboardRouter]: ../../API-Ref/html/classKeyboardRouter.html
+[Logic]: ../../API-Ref/html/classLogic.html
+[Main]: ../../API-Ref/html/classmain.html
+[Orb]: ../../API-Ref/html/classOrb.html
+[ParticleEmitterLogic]: ../../API-Ref/html/classParticleEmitterLogic.html
+[ParticleEmitter]: ../../API-Ref/html/classParticleEmitter.html
+[PlayerManager]: ../../API-Ref/html/classPlayerManager.html
+[PolygonBody]: ../../API-Ref/html/classPolygonBody.html
+[Polygon]: ../../API-Ref/html/classPolygon.html
+[Portal]: ../../API-Ref/html/classPortal.html
+[QQmlListPropertyOnQList]: ../../API-Ref/html/classUtil_1_1QQmlListPropertyOnQList.html
+[Robot]: ../../API-Ref/html/classRobot.html
+[RollingMovementLogic]: ../../API-Ref/html/classRollingMovementLogic.html
+[Snowflake]: ../../API-Ref/html/classSnowflake.html
+[SoundManager]: ../../API-Ref/html/classcom_1_1google_1_1fpl_1_1utils_1_1SoundManager.html
+[StopwatchLogic]: ../../API-Ref/html/classStopwatchLogic.html
+[TerrainMeshRenderer]: ../../API-Ref/html/classTerrainMeshRenderer.html
 [TextureManager]: ../../API-Ref/html/classTextureManager.html
+[TriggerAxisScheme]: ../../API-Ref/html/classTriggerAxisScheme.html
+[UiComponent]: ../../API-Ref/html/classUiComponent.html
+[Ui]: ../../API-Ref/html/classUi.html
+[VirtualController]: ../../API-Ref/html/classVirtualController.html
+[VoltAirActivity]: ../../API-Ref/html/classVoltAirActivity.html
+[VoltAirEngine]: ../../API-Ref/html/group__Engine.html

@@ -1,0 +1,9 @@
+*.user
+bin
+build-*
+gen
+local.properties
+obj
+Droidlings/android/libs
+doxygen
+third_party/liquidfun

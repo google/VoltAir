@@ -23,10 +23,12 @@ gitrepo=${GITREPO-git@github.com:google/VoltAir.git}
 # Create an orphan branch with nothing in it.
 git branch -D gh-pages
 git checkout --orphan gh-pages
-
+perl -ni -e 'print unless /index.html|doc/' < .gitignore > tmpfile
+mv tmpfile .gitignore
+git add .gitignore
 git add index.html
 git add doc/API-Ref
-git add doc/building
+git add doc/gettingStarted
 git add doc/contributing
 git add doc/main
 git commit -m "gh-pages"

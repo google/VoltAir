@@ -1,0 +1,3 @@
+[submodule "third_party/liquidfun"]
+	path = third_party/liquidfun
+	url = git@github.com:google/liquidfun.git

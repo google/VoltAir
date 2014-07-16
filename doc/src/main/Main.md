@@ -3,6 +3,10 @@ The VoltAir Project {#mainpage}
 
 ## Overview
 
+For questions, comments, or concerns not addressed below, feel free to join and email the [VoltAir
+discussion group][VoltAirDiscuss], or dicuss online using `#VoltAir` (e.g. on StackOverflow or
+Twitter).
+
 <div class="toc">
   <ul>
     <li>[Overview](#1)</li>
@@ -773,6 +777,7 @@ be extracted for some value:
 [QtQuick]: http://qt-project.org/doc/qt-5/qtquick-index.html
 [Qt]: http://qt-project.org/
 [VoltAir]: https://play.google.com/store/apps/details?id=com.google.fpl.voltair
+[VoltAirDiscuss]: http://groups.google.com/d/forum/voltair-discuss
 
 [Actor]: ../../API-Ref/html/classActor.html
 [AndroidActivity]: ../../API-Ref/html/classAndroidActivity.html

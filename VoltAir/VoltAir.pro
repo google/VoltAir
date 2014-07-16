@@ -27,7 +27,7 @@ defined ( LIQUIDFUN ) {
     LIQUIDFUN_DIR = $$(LIQUIDFUN)
 } else {
     # TODO: change to "liquidfun" for release.
-    LIQUIDFUN_DIR = ../../../libs/liquidfun
+    LIQUIDFUN_DIR = ../third_party/liquidfun/liquidfun
 }
 
 # Additional import path used to resolve QML modules in Creator's code model

@@ -26,7 +26,7 @@ defined ( LIQUIDFUN ) {
     LIQUIDFUN_DIR = $$(LIQUIDFUN)
 } else {
     # Note: This needs to simply be changed to "liquidfun" for release.
-    LIQUIDFUN_DIR = $$PWD/../../../../libs/liquidfun
+    LIQUIDFUN_DIR = $$PWD/../../third_party/liquidfun/liquidfun
 }
 
 # TODO: limit this scope of this to just the headers/sources in this file.

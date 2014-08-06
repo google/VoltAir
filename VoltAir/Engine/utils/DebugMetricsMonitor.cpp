@@ -84,7 +84,7 @@ void DebugMetricsMonitor::updateMemoryUsage() {
     // Memory info prints number of resident 4KB memory pages in the second column
     // See: http://man7.org/linux/man-pages/man5/proc.5.html
     // NOTE: This number is not accurate past the nearest 4KB.
-    mMemoryUsage = procInfo.split("\\s")[1].toLong() * 4 * 1000;
+    mMemoryUsage = procInfo.split(QRegExp("\\s"))[1].toLong() * 4 * 1000;
 #endif
 
     if (mLoggingMetrics) {

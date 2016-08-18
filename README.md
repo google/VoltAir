@@ -13,7 +13,7 @@ Please visit the [Contributing] page for information about how to contribute.
   [1.0]: http://google.github.io/voltair/ReleaseNotes.html
   [Qt Quick]: http://qt-project.org/doc/qt-5/qtquick-index.html
   [Liquidfun]: http://google.github.io/liquidfun/
-  [landing page]: http://google.github.io/voltair/
+  [landing page]: http://google.github.io/VoltAir/
   [Design]: http://google.github.io/voltair/documentation
-  [Documentation]: http://google.github.io/voltair/documentation
-  [Contributing]: http://google.github.io/voltair/contributing
+  [Documentation]: http://google.github.io/VoltAir/doc/main/html/
+  [Contributing]: http://google.github.io/VoltAir/doc/contributing/html/
